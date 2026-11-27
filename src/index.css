@@ -1,0 +1,162 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  /* Colors: Surfaces & Text */
+  --color-bg-canvas: #FFFFFF;
+  --color-bg-canvas-subtle: #F7F9FC;
+  --color-bg-surface: #FFFFFF;
+  --color-bg-surface-muted: #EEF2F7;
+  --color-text-primary: #25273E;
+  --color-text-muted: #788096;
+  --color-text-disabled: #A3ABC0;
+  --color-border-subtle: #E2E7F0;
+  --color-border-accent-bg: #D2EBF2;
+
+  /* Colors: Brand & Interactive Accents */
+  --color-accent-navy: #25273E;
+  --color-accent-coral: #F98689;
+  --color-accent-cyan: #4FC0D8;
+
+  /* Colors: Subject Swatches & Status */
+  --color-unit-crimson: #B6242C;
+  --color-unit-cerulean: #2E98D1;
+  --color-status-success: #3CC496;
+  --color-status-warning: #FBB25C;
+  --color-status-error: #D93644;
+
+  /* Spacing Scale (4px base / 8px macro rhythm) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-gutter: var(--space-5);
+  --space-section: var(--space-5);
+  --space-card-padding: var(--space-4);
+  --space-card-gap: var(--space-3);
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 9999px;
+
+  /* Border Widths */
+  --border-width-thin: 1px;
+  --border-width-medium: 1.5px;
+  --border-width-halo: 4px;
+
+  /* Shadows & Elevation */
+  --shadow-none: none;
+  --shadow-card: 0 4px 16px rgba(37, 39, 62, 0.06);
+  --shadow-floating-navy: 0 6px 16px rgba(37, 39, 62, 0.24);
+  --shadow-floating-coral: 0 8px 24px rgba(249, 134, 137, 0.35);
+
+  /* Typography */
+  --font-display: "Poppins", sans-serif;
+  --font-body: "DM Sans", "Plus Jakarta Sans", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --text-h1-size: 26px;
+  --text-h2-size: 20px;
+  --text-h3-size: 16px;
+  --text-h4-size: 14px;
+  --text-body-size: 13px;
+  --text-caption-size: 11px;
+
+  /* Density Controls (Default: Airy) */
+  --density-card-pad: 20px;
+  --density-stack-gap: 16px;
+  --density-row-height: 48px;
+  --density-input-py: 10px;
+}
+
+.dark {
+  --color-bg-canvas: #111322;
+  --color-bg-canvas-subtle: #171A2E;
+  --color-bg-surface: #1D2138;
+  --color-bg-surface-muted: #262B47;
+  --color-text-primary: #F3F5FA;
+  --color-text-muted: #A1AAC2;
+  --color-text-disabled: #6B7390;
+  --color-border-subtle: #2E3454;
+  --color-border-accent-bg: #223B48;
+
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.32);
+  --shadow-floating-navy: 0 6px 18px rgba(0, 0, 0, 0.45);
+  --shadow-floating-coral: 0 8px 24px rgba(249, 134, 137, 0.25);
+}
+
+[data-density="compact"] {
+  --density-card-pad: 12px;
+  --density-stack-gap: 8px;
+  --density-row-height: 36px;
+  --density-input-py: 7px;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-body);
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-canvas);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+  }
+
+  code, pre, .font-mono {
+    font-family: var(--font-mono);
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom Range Slider matching Muddled. screen 2 */
+input[type="range"].muddled-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 9999px;
+  outline: none;
+}
+
+input[type="range"].muddled-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background: var(--color-accent-cyan);
+  border: 2.5px solid #FFFFFF;
+  box-shadow: 0 2px 8px rgba(37, 39, 62, 0.2);
+  cursor: pointer;
+  transition: transform 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+input[type="range"].muddled-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.12);
+}
+
+input[type="range"].muddled-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background: var(--color-accent-cyan);
+  border: 2.5px solid #FFFFFF;
+  box-shadow: 0 2px 8px rgba(37, 39, 62, 0.2);
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
